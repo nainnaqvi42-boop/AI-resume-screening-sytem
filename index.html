@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Screening System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-robot"></i>
+            </div>
+            <div>
+                <h2>ResumeAI</h2>
+                <span>Screening System</span>
+            </div>
+        </div>
+
+        <nav>
+            <p class="menu-title">MAIN MENU</p>
+
+            <a href="#" class="nav-link active" onclick="showPage('dashboard')">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+
+            <a href="#" class="nav-link" onclick="showPage('jobs')">
+                <i class="fa-solid fa-briefcase"></i>
+                Jobs
+            </a>
+
+            <a href="#" class="nav-link" onclick="showPage('candidates')">
+                <i class="fa-solid fa-users"></i>
+                Candidates
+            </a>
+
+            <a href="#" class="nav-link" onclick="showPage('screening')">
+                <i class="fa-solid fa-microchip"></i>
+                AI Screening
+            </a>
+
+            <a href="#" class="nav-link" onclick="showPage('reports')">
+                <i class="fa-solid fa-file-chart-column"></i>
+                Reports
+            </a>
+
+            <p class="menu-title">SYSTEM</p>
+
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-circle-question"></i>
+                Help
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="user-box">
+                <div class="avatar">AK</div>
+                <div>
+                    <strong>Admin</strong>
+                    <small>Recruiter</small>
+                </div>
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <!-- Top Bar -->
+        <header class="topbar">
+
+            <button class="mobile-menu" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search candidates, jobs...">
+            </div>
+
+            <div class="top-actions">
+
+                <button class="icon-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification">3</span>
+                </button>
+
+                <div class="profile">
+                    <div class="avatar">AK</div>
+                    <div>
+                        <strong>Husnain Naqvi
+                        </strong>
+                        <small>Administrator</small>
+                    </div>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard" class="page active-page">
+
+            <div class="page-header">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Welcome back! Here's what's happening with your recruitment.</p>
+                </div>
+
+                <button class="primary-btn" onclick="openUploadModal()">
+                    <i class="fa-solid fa-upload"></i>
+                    Upload Resumes
+                </button>
+            </div>
+
+
+            <!-- Statistics -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Candidates</span>
+                        <h2>1,248</h2>
+                        <small class="positive">
+                            <i class="fa-solid fa-arrow-up"></i> 12.5%
+                        </small>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+
+                    <div>
+                        <span>Active Jobs</span>
+                        <h2>24</h2>
+                        <small class="positive">
+                            <i class="fa-solid fa-arrow-up"></i> 8.2%
+                        </small>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Shortlisted</span>
+                        <h2>186</h2>
+                        <small class="positive">
+                            <i class="fa-solid fa-arrow-up"></i> 15.4%
+                        </small>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+
+                    <div>
+                        <span>AI Screened</span>
+                        <h2>982</h2>
+                        <small class="positive">
+                            <i class="fa-solid fa-arrow-up"></i> 21.7%
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Dashboard Grid -->
+
+            <div class="dashboard-grid">
+
+                <!-- Recent Jobs -->
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <div>
+                            <h3>Recent Job Postings</h3>
+                            <p>Recently created positions</p>
+                        </div>
+
+                        <button class="text-btn" onclick="showPage('jobs')">
+                            View All
+                        </button>
+                    </div>
+
+
+                    <div class="job-list">
+
+                        <div class="job-item">
+                            <div class="job-icon">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+
+                            <div class="job-info">
+                                <strong>Senior Python Developer</strong>
+                                <span>Engineering • Full Time</span>
+                            </div>
+
+                            <div class="job-count">
+                                <strong>86</strong>
+                                <span>Applicants</span>
+                            </div>
+
+                            <span class="status active">Active</span>
+                        </div>
+
+
+                        <div class="job-item">
+                            <div class="job-icon">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+
+                            <div class="job-info">
+                                <strong>Data Scientist</strong>
+                                <span>Data Science • Full Time</span>
+                            </div>
+
+                            <div class="job-count">
+                                <strong>124</strong>
+                                <span>Applicants</span>
+                            </div>
+
+                            <span class="status active">Active</span>
+                        </div>
+
+
+                        <div class="job-item">
+                            <div class="job-icon">
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+
+                            <div class="job-info">
+                                <strong>UI/UX Designer</strong>
+                                <span>Design • Full Time</span>
+                            </div>
+
+                            <div class="job-count">
+                                <strong>62</strong>
+                                <span>Applicants</span>
+                            </div>
+
+                            <span class="status active">Active</span>
+                        </div>
+
+
+                        <div class="job-item">
+                            <div class="job-icon">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                            </div>
+
+                            <div class="job-info">
+                                <strong>Mobile App Developer</strong>
+                                <span>Engineering • Remote</span>
+                            </div>
+
+                            <div class="job-count">
+                                <strong>48</strong>
+                                <span>Applicants</span>
+                            </div>
+
+                            <span class="status closed">Closed</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI Overview -->
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <div>
+                            <h3>AI Screening Overview</h3>
+                            <p>This month's screening activity</p>
+                        </div>
+                    </div>
+
+                    <div class="ai-circle">
+
+                        <div class="circle">
+                            <strong>78%</strong>
+                            <span>Match Rate</span>
+                        </div>
+
+                    </div>
+
+                    <div class="ai-stats">
+
+                        <div>
+                            <span class="dot blue-dot"></span>
+                            Highly Matched
+                            <strong>186</strong>
+                        </div>
+
+                        <div>
+                            <span class="dot green-dot"></span>
+                            Moderate Match
+                            <strong>432</strong>
+                        </div>
+
+                        <div>
+                            <span class="dot orange-dot"></span>
+                            Low Match
+                            <strong>364</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Top Candidates -->
+
+            <div class="card candidates-card">
+
+                <div class="card-header">
+                    <div>
+                        <h3>Top Matching Candidates</h3>
+                        <p>Candidates ranked by AI matching score</p>
+                    </div>
+
+                    <button class="text-btn" onclick="showPage('candidates')">
+                        View All Candidates
+                    </button>
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                        <tr>
+                            <th>Candidate</th>
+                            <th>Applied For</th>
+                            <th>Experience</th>
+                            <th>Skills Match</th>
+                            <th>AI Score</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        <tr>
+                            <td>
+                                <div class="candidate">
+                                    <div class="candidate-avatar avatar-blue">SA</div>
+                                    <div>
+                                        <strong>Sarah Ahmed</strong>
+                                        <span>sarah@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>Data Scientist</td>
+                            <td>4 Years</td>
+
+                            <td>
+                                <div class="progress">
+                                    <div style="width:94%"></div>
+                                </div>
+                                <small>94%</small>
+                            </td>
+
+                            <td>
+                                <span class="score high">94%</span>
+                            </td>
+
+                            <td>
+                                <span class="status shortlisted">Shortlisted</span>
+                            </td>
+
+                            <td>
+                                <button class="view-btn" onclick="viewCandidate('Sarah Ahmed')">
+                                    View
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <div class="candidate">
+                                    <div class="candidate-avatar avatar-purple">MA</div>
+                                    <div>
+                                        <strong>Muhammad Ali</strong>
+                                        <span>ali@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>Python Developer</td>
+                            <td>3 Years</td>
+
+                            <td>
+                                <div class="progress">
+                                    <div style="width:89%"></div>
+                                </div>
+                                <small>89%</small>
+                            </td>
+
+                            <td>
+                                <span class="score high">89%</span>
+                            </td>
+
+                            <td>
+                                <span class="status shortlisted">Shortlisted</span>
+                            </td>
+
+                            <td>
+                                <button class="view-btn" onclick="viewCandidate('Muhammad Ali')">
+                                    View
+                                </button>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <div class="candidate">
+                                    <div class="candidate-avatar avatar-green">HK</div>
+                                    <div>
+                                        <strong>Hassan Khan</strong>
+                                        <span>hassan@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>Data Scientist</td>
+                            <td>2 Years</td>
+
+                            <td>
+                                <div class="progress">
+                                    <div style="width:81%"></div>
+                                </div>
+                                <small>81%</small>
+                            </td>
+
+                            <td>
+                                <span class="score medium">81%</span>
+                            </td>
+
+                            <td>
+                                <span class="status review">Review</span>
+                            </td>
+
+                            <td>
+                                <button class="view-btn" onclick="viewCandidate('Hassan Khan')">
+                                    View
+                                </button>
+                            </td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= JOBS PAGE ================= -->
+
+        <section id="jobs" class="page">
+
+            <div class="page-header">
+                <div>
+                    <h1>Jobs</h1>
+                    <p>Manage your job vacancies.</p>
+                </div>
+
+                <button class="primary-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    Create Job
+                </button>
+            </div>
+
+
+            <div class="jobs-grid">
+
+                <div class="job-card">
+                    <div class="job-card-top">
+                        <div class="job-icon large">
+                            <i class="fa-brands fa-python"></i>
+                        </div>
+                        <span class="status active">Active</span>
+                    </div>
+
+                    <h3>Senior Python Developer</h3>
+                    <p>Build scalable backend applications and APIs.</p>
+
+                    <div class="job-tags">
+                        <span>Python</span>
+                        <span>FastAPI</span>
+                        <span>PostgreSQL</span>
+                    </div>
+
+                    <div class="job-footer">
+                        <span><i class="fa-solid fa-users"></i> 86 Applicants</span>
+                        <button class="view-btn">Manage</button>
+                    </div>
+                </div>
+
+
+                <div class="job-card">
+                    <div class="job-card-top">
+                        <div class="job-icon large">
+                            <i class="fa-solid fa-chart-simple"></i>
+                        </div>
+                        <span class="status active">Active</span>
+                    </div>
+
+                    <h3>Data Scientist</h3>
+                    <p>Develop machine learning and data analytics solutions.</p>
+
+                    <div class="job-tags">
+                        <span>Python</span>
+                        <span>Machine Learning</span>
+                        <span>SQL</span>
+                    </div>
+
+                    <div class="job-footer">
+                        <span><i class="fa-solid fa-users"></i> 124 Applicants</span>
+                        <button class="view-btn">Manage</button>
+                    </div>
+                </div>
+
+
+                <div class="job-card">
+                    <div class="job-card-top">
+                        <div class="job-icon large">
+                            <i class="fa-solid fa-pen-ruler"></i>
+                        </div>
+                        <span class="status active">Active</span>
+                    </div>
+
+                    <h3>UI/UX Designer</h3>
+                    <p>Design modern and user-friendly digital products.</p>
+
+                    <div class="job-tags">
+                        <span>Figma</span>
+                        <span>UI Design</span>
+                        <span>UX Research</span>
+                    </div>
+
+                    <div class="job-footer">
+                        <span><i class="fa-solid fa-users"></i> 62 Applicants</span>
+                        <button class="view-btn">Manage</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CANDIDATES ================= -->
+
+        <section id="candidates" class="page">
+
+            <div class="page-header">
+                <div>
+                    <h1>Candidates</h1>
+                    <p>Review and manage candidates screened by AI.</p>
+                </div>
+
+                <button class="primary-btn" onclick="openUploadModal()">
+                    <i class="fa-solid fa-upload"></i>
+                    Upload Resume
+                </button>
+            </div>
+
+
+            <div class="filter-bar">
+
+                <input type="text" placeholder="Search candidate...">
+
+                <select>
+                    <option>All Jobs</option>
+                    <option>Data Scientist</option>
+                    <option>Python Developer</option>
+                    <option>UI/UX Designer</option>
+                </select>
+
+                <select>
+                    <option>All Status</option>
+                    <option>Shortlisted</option>
+                    <option>Review</option>
+                    <option>Rejected</option>
+                </select>
+
+                <button class="filter-btn">
+                    <i class="fa-solid fa-filter"></i>
+                    Filter
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                        <tr>
+                            <th>Candidate</th>
+                            <th>Position</th>
+                            <th>Experience</th>
+                            <th>Education</th>
+                            <th>AI Score</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        <tr>
+                            <td>
+                                <div class="candidate">
+                                    <div class="candidate-avatar avatar-blue">SA</div>
+                                    <div>
+                                        <strong>Sarah Ahmed</strong>
+                                        <span>sarah@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Data Scientist</td>
+                            <td>4 Years</td>
+                            <td>BS Data Science</td>
+                            <td><span class="score high">94%</span></td>
+                            <td><span class="status shortlisted">Shortlisted</span></td>
+                            <td><button class="view-btn" onclick="viewCandidate('Sarah Ahmed')">View</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="candidate">
+                                    <div class="candidate-avatar avatar-purple">MA</div>
+                                    <div>
+                                        <strong>Muhammad Ali</strong>
+                                        <span>ali@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Python Developer</td>
+                            <td>3 Years</td>
+                            <td>BS Computer Science</td>
+                            <td><span class="score high">89%</span></td>
+                            <td><span class="status shortlisted">Shortlisted</span></td>
+                            <td><button class="view-btn" onclick="viewCandidate('Muhammad Ali')">View</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="candidate">
+                                    <div class="candidate-avatar avatar-green">HK</div>
+                                    <div>
+                                        <strong>Hassan Khan</strong>
+                                        <span>hassan@email.com</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Data Scientist</td>
+                            <td>2 Years</td>
+                            <td>BS Software Engineering</td>
+                            <td><span class="score medium">81%</span></td>
+                            <td><span class="status review">Review</span></td>
+                            <td><button class="view-btn" onclick="viewCandidate('Hassan Khan')">View</button></td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= AI SCREENING ================= -->
+
+        <section id="screening" class="page">
+
+            <div class="page-header">
+                <div>
+                    <h1>AI Resume Screening</h1>
+                    <p>Analyze resumes against your job requirements.</p>
+                </div>
+            </div>
+
+
+            <div class="screening-container">
+
+                <div class="upload-area" onclick="openUploadModal()">
+
+                    <div class="upload-icon">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+
+                    <h2>Upload Resumes</h2>
+
+                    <p>
+                        Upload PDF or DOCX resumes and let AI analyze
+                        candidate-job compatibility.
+                    </p>
+
+                    <button class="primary-btn">
+                        Choose Files
+                    </button>
+
+                    <small>Supported formats: PDF, DOCX</small>
+
+                </div>
+
+
+                <div class="ai-process">
+
+                    <h3>AI Screening Pipeline</h3>
+
+                    <div class="process-step">
+                        <span>1</span>
+                        <div>
+                            <strong>Resume Parsing</strong>
+                            <p>Extract candidate information</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <span>2</span>
+                        <div>
+                            <strong>Skill Extraction</strong>
+                            <p>Identify technical and soft skills</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <span>3</span>
+                        <div>
+                            <strong>Semantic Matching</strong>
+                            <p>Compare resume with job description</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <span>4</span>
+                        <div>
+                            <strong>AI Score</strong>
+                            <p>Generate explainable match score</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= REPORTS ================= -->
+
+        <section id="reports" class="page">
+
+            <div class="page-header">
+                <div>
+                    <h1>Reports & Analytics</h1>
+                    <p>Monitor your recruitment performance.</p>
+                </div>
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-file-lines"></i>
+                    </div>
+                    <div>
+                        <span>Resumes Processed</span>
+                        <h2>1,248</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <div>
+                        <span>Shortlisted</span>
+                        <h2>186</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-percent"></i>
+                    </div>
+                    <div>
+                        <span>Average Match</span>
+                        <h2>78%</h2>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="card analytics-card">
+
+                <h3>AI Screening Performance</h3>
+
+                <div class="chart">
+
+                    <div class="bar" style="height:70%">
+                        <span>Jan</span>
+                    </div>
+
+                    <div class="bar" style="height:82%">
+                        <span>Feb</span>
+                    </div>
+
+                    <div class="bar" style="height:60%">
+                        <span>Mar</span>
+                    </div>
+
+                    <div class="bar" style="height:88%">
+                        <span>Apr</span>
+                    </div>
+
+                    <div class="bar" style="height:76%">
+                        <span>May</span>
+                    </div>
+
+                    <div class="bar" style="height:94%">
+                        <span>Jun</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- Upload Modal -->
+
+<div class="modal" id="uploadModal">
+
+    <div class="modal-content">
+
+        <button class="close" onclick="closeUploadModal()">
+            &times;
+        </button>
+
+        <div class="modal-icon">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+        </div>
+
+        <h2>Upload Resume</h2>
+
+        <p>Select a resume to process with the AI screening system.</p>
+
+        <label class="file-input">
+
+            <i class="fa-solid fa-file-pdf"></i>
+
+            <span id="fileName">
+                Click to select resume
+            </span>
+
+            <input type="file"
+                   accept=".pdf,.doc,.docx"
+                   onchange="showFileName(this)">
+
+        </label>
+
+        <button class="primary-btn full" onclick="processResume()">
+            <i class="fa-solid fa-robot"></i>
+            Start AI Screening
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
